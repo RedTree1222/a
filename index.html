@@ -16,48 +16,28 @@
     --card-bg: #1e1e1e;
     --glow: rgba(255,144,0,0.25);
 }
-
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { margin:0; font-family:'Roboto', sans-serif; background: var(--bg); color: var(--text); overflow-x:hidden; }
-
-nav {
-    position: fixed; top:0; width:100%; height:60px; background: linear-gradient(90deg, var(--purple), var(--cyan));
-    display:flex; justify-content:space-between; align-items:center; padding:0 20px; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.4);
-    border-bottom:1px solid #222;
-}
+nav { position: fixed; top:0; width:100%; height:60px; background: linear-gradient(90deg, var(--purple), var(--cyan)); display:flex; justify-content:space-between; align-items:center; padding:0 20px; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.4); border-bottom:1px solid #222; }
 nav .logo { font-size:22px; font-weight:bold; cursor:pointer; color:#fff; text-shadow:0 0 6px rgba(255,255,255,0.3);}
 nav .logo span { background: var(--orange); color:#000; padding:2px 6px; border-radius:5px; margin-left:4px; font-size:16px; }
-
 nav .user-area { display:flex; align-items:center; gap:12px; }
 .user-pill { background:#222; padding:6px 14px; border-radius:25px; font-size:12px; color:#aaa; font-weight:bold; border:1px solid #333; transition:0.2s; }
 .user-pill:hover { background:var(--orange); color:#000; border:none; }
-
 button.logout-btn { background:none; border:none; color:#ff4444; font-size:11px; cursor:pointer; font-weight:bold; transition:0.2s; }
 button.logout-btn:hover { text-shadow:0 0 4px #ff4444; }
 
-aside {
-    width:220px; position:fixed; top:60px; left:0; height:calc(100vh - 60px); background: linear-gradient(180deg,#111,#1a1a1a);
-    border-right:1px solid #222; overflow-y:auto; padding-top:10px; transition:0.3s; box-shadow:2px 0 10px rgba(0,0,0,0.5);
-}
+aside { width:220px; position:fixed; top:60px; left:0; height:calc(100vh - 60px); background: linear-gradient(180deg,#111,#1a1a1a); border-right:1px solid #222; overflow-y:auto; padding-top:10px; transition:0.3s; box-shadow:2px 0 10px rgba(0,0,0,0.5); }
 .side-item { padding:12px 20px; display:flex; align-items:center; gap:12px; cursor:pointer; font-size:14px; color:#aaa; border-radius:10px; transition:0.2s; }
 .side-item:hover { color:#fff; background: linear-gradient(90deg, var(--orange), var(--purple)); box-shadow:0 0 10px var(--glow); font-weight:bold; }
 .side-item.active { background: linear-gradient(90deg,var(--cyan),var(--purple)); color:#fff; font-weight:bold; box-shadow:0 0 10px var(--glow); }
 
-main {
-    margin-left:220px; margin-top:60px; padding:25px; transition:0.3s;
-}
+main { margin-left:220px; margin-top:60px; padding:25px; transition:0.3s; }
 .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px; }
 
-.card {
-    background: var(--card-bg); border-radius:15px; overflow:hidden; cursor:pointer;
-    box-shadow:0 2px 6px rgba(0,0,0,0.4); transition:0.3s;
-}
+.card { background: var(--card-bg); border-radius:15px; overflow:hidden; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.4); transition:0.3s; }
 .card:hover { transform: translateY(-4px); box-shadow:0 8px 20px var(--glow); }
-
-.v-thumb {
-    width:100%; aspect-ratio:16/9; object-fit:cover; display:block;
-    transition: transform 0.2s, filter 0.3s; border-radius:15px;
-}
+.v-thumb { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition: transform 0.2s, filter 0.3s; border-radius:15px; }
 .card:hover .v-thumb { transform: scale(1.03); filter: brightness(1.1); }
 
 .v-meta { padding:12px 8px; display:flex; gap:12px; align-items:center; }
@@ -66,12 +46,9 @@ main {
 .v-info p { margin:4px 0 0; font-size:12px; color:#aaa; display:flex; align-items:center; }
 .checkmark { color: var(--orange); font-size:11px; margin-left:4px; }
 
-#player-page {
-    display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:2000;
-}
+#player-page { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:2000; }
 .video-wrapper { width:100%; max-width:1000px; margin:20px auto; aspect-ratio:16/9; background:#111; border-radius:12px; overflow:hidden; box-shadow:0 0 20px var(--glow);}
 iframe { width:100%; height:100%; border:none; }
-
 .player-back { font-size:24px; cursor:pointer; color:#fff; padding:15px; display:inline-block; text-shadow:0 0 6px rgba(255,255,255,0.3); }
 
 #modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); z-index:3000; padding:20px; display:flex; align-items:center; justify-content:center; }
@@ -102,12 +79,13 @@ iframe { width:100%; height:100%; border:none; }
 </nav>
 
 <aside>
-    <div class="side-item active">🏠 Home</div>
-    <div class="side-item">🔥 Trending</div>
-    <div class="side-item">🎬 Subscriptions</div>
+    <div class="side-item active" onclick="switchSection('home')">🏠 Home</div>
+    <div class="side-item" onclick="switchSection('trending')">🔥 Trending</div>
+    <div class="side-item" onclick="switchSection('subscriptions')">🎬 Subscriptions</div>
     <hr style="border:0;border-top:1px solid #222;margin:10px 0;">
-    <div class="side-item">📂 Library</div>
-    <div class="side-item">🕒 History</div>
+    <div class="side-item" onclick="switchSection('library')">📂 Library</div>
+    <div class="side-item" onclick="switchSection('history')">🕒 History</div>
+    <div class="side-item" onclick="switchSection('liked')">❤️ Liked Videos</div>
     <div class="side-item" onclick="openModal()" style="color:var(--orange); font-weight:bold;">➕ Upload</div>
 </aside>
 
@@ -119,10 +97,10 @@ iframe { width:100%; height:100%; border:none; }
 </main>
 
 <div class="bottom-nav">
-    <div class="b-nav-item" onclick="location.reload()">🏠</div>
-    <div class="b-nav-item" onclick="alert('Shorts coming soon!')">🩳</div>
+    <div class="b-nav-item" onclick="switchSection('home')">🏠</div>
+    <div class="b-nav-item" onclick="switchSection('trending')">🩳</div>
     <div class="b-nav-item" onclick="openModal()" style="font-size:28px; color:var(--orange)">⊕</div>
-    <div class="b-nav-item" onclick="alert('No notifications')">🔔</div>
+    <div class="b-nav-item" onclick="switchSection('notifications')">🔔</div>
     <div class="b-nav-item" onclick="logout()">👤</div>
 </div>
 
@@ -155,74 +133,93 @@ iframe { width:100%; height:100%; border:none; }
 </div>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxb45LMkWdIyvyX6l19hF1CeTkutiiRDK5HeV0IcYXNrTq4Quxh6sQ7cg3bJyUW-1_y/exec";
+const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
 const THUMB = "https://raw.githubusercontent.com/portonvpn/cemtube/main/t.png";
 let currentUser = localStorage.getItem('cem_user');
+let userPass = localStorage.getItem('cem_pass');
 
-function logout(){ localStorage.removeItem('cem_user'); location.reload(); }
-
-async function initUser(){
-    if(!currentUser){
+// --- PASSWORD SYSTEM ---
+async function initUser() {
+    const correctPass = "cemtube123"; // your password
+    if(!currentUser || !userPass) {
         currentUser = prompt("Enter your Channel Name:");
         if(!currentUser) return initUser();
+        userPass = prompt("Enter Password:");
+        if(userPass !== correctPass) { alert("Incorrect password!"); return initUser(); }
         localStorage.setItem('cem_user', currentUser);
+        localStorage.setItem('cem_pass', userPass);
     }
     document.getElementById('user-display').innerText = currentUser;
 }
 
-async function loadHome(){
+function logout(){
+    localStorage.removeItem('cem_user');
+    localStorage.removeItem('cem_pass');
+    location.reload();
+}
+
+// --- DATA ---
+let allVideos = [];
+let likedVideos = [];
+
+// --- LOAD HOME ---
+async function loadHome() {
     const grid = document.getElementById('main-grid');
-    try{
+    try {
         const res = await fetch(SCRIPT_URL);
         const data = await res.json();
-        grid.innerHTML = "";
-        data.reverse().forEach(v=>{
-            const isZoro = v.uploader.toLowerCase().includes('zoro');
-            const name = isZoro?'Zoro(dev)':v.uploader;
-            const initial = name.charAt(0).toUpperCase();
-            grid.innerHTML += `
-            <div class="card" onclick="openPlayer('${v.id}','${v.name}','${name}',${isZoro})">
-                <img src="${THUMB}" class="v-thumb" loading="lazy">
-                <div class="v-meta">
-                    <div class="v-avatar">${initial}</div>
-                    <div class="v-info">
-                        <h4>${v.name}</h4>
-                        <p>${name}${isZoro?'<span class="checkmark">✔</span>':''} • Cemtube 2TB</p>
-                    </div>
-                </div>
-            </div>`;
-        });
-    }catch(e){ grid.innerHTML = "<div style='color:red'>Failed to connect. Check Script URL.</div>"; }
-}
-
-async function handleUpload(){
-    const file = document.getElementById('vid-input').files[0];
-    if(!file) return alert("Select a video!");
-    if(file.size>50*1024*1024) return alert("Max 50MB");
-
-    const btn = document.getElementById('start-btn'); 
-    const status = document.getElementById('up-status'); 
-    btn.disabled=true; btn.style.opacity="0.5";
-    document.getElementById('prog-bg').style.display='block'; 
-    status.innerText="Syncing with Cemtube Drive...";
-
-    const reader = new FileReader();
-    reader.onload = function(){
-        document.getElementById('prog-bar').style.width='75%';
-        fetch(SCRIPT_URL,{ method:"POST", mode:"no-cors", body:new URLSearchParams({
-            "videoData": reader.result.split(',')[1],
-            "videoMime": file.type,
-            "videoName": file.name,
-            "username": currentUser
-        })}).then(()=>{
-            document.getElementById('prog-bar').style.width='100%';
-            status.innerText="Upload complete! Refreshing...";
-            setTimeout(()=>location.reload(),1500);
-        });
+        allVideos = data.reverse();
+        renderVideos(allVideos);
+    } catch(e) {
+        grid.innerHTML = "<div style='color:red'>Failed to connect. Check Script URL.</div>";
     }
-    reader.readAsDataURL(file);
 }
 
+// --- RENDER VIDEOS ---
+function renderVideos(videos) {
+    const grid = document.getElementById('main-grid');
+    grid.innerHTML = "";
+    videos.forEach(v => {
+        const isZoro = v.uploader.toLowerCase().includes('zoro');
+        const name = isZoro?'Zoro(dev)':v.uploader;
+        const initial = name.charAt(0).toUpperCase();
+        grid.innerHTML += `
+        <div class="card" onclick="openPlayer('${v.id}','${v.name}','${name}',${isZoro})">
+            <img src="${THUMB}" class="v-thumb" loading="lazy">
+            <div class="v-meta">
+                <div class="v-avatar">${initial}</div>
+                <div class="v-info">
+                    <h4>${v.name}</h4>
+                    <p>${name}${isZoro?'<span class="checkmark">✔</span>':''} • Cemtube 2TB</p>
+                    <button onclick="likeVideo(event,'${v.id}','${v.name}','${name}',${isZoro})" style="font-size:12px;margin-top:4px;background:#222;color:#fff;padding:3px 6px;border-radius:5px;border:none;cursor:pointer;">❤️ Like</button>
+                </div>
+            </div>
+        </div>`;
+    });
+}
+
+// --- SWITCH SECTIONS ---
+function switchSection(section){
+    document.querySelectorAll('.side-item').forEach(s=>s.classList.remove('active'));
+    document.querySelector(`.side-item:contains(${section.charAt(0).toUpperCase()+section.slice(1)})`)?.classList.add('active');
+
+    const title = document.getElementById('section-title');
+    if(section==='home'){ title.innerText="Recommended for you"; renderVideos(allVideos); }
+    else if(section==='trending'){ title.innerText="🔥 Trending"; renderVideos(allVideos.slice(0,8)); }
+    else if(section==='subscriptions'){ title.innerText="🎬 Subscriptions"; renderVideos(allVideos.filter(v=>v.subscribed)); }
+    else if(section==='library'){ title.innerText="📂 Library"; renderVideos(allVideos); }
+    else if(section==='history'){ title.innerText="🕒 History"; renderVideos(allVideos.filter(v=>v.watched)); }
+    else if(section==='liked'){ title.innerText="❤️ Liked Videos"; renderVideos(likedVideos); }
+}
+
+// --- LIKE VIDEO ---
+function likeVideo(e,id,name,uploader,isZoro){
+    e.stopPropagation();
+    likedVideos.push({id,name,uploader,isZoro});
+    alert("Video added to Liked Videos!");
+}
+
+// --- PLAYER ---
 function openPlayer(id,name,uploader,isZoro){
     document.getElementById('player-page').style.display='block';
     document.getElementById('p-title').innerText=name;
@@ -232,16 +229,24 @@ function openPlayer(id,name,uploader,isZoro){
     window.scrollTo(0,0);
     document.body.style.overflow="hidden";
 }
+
 function closePlayer(){
     document.getElementById('player-page').style.display='none';
     document.getElementById('player-target').innerHTML="";
     document.body.style.overflow="auto";
 }
+
+// --- MODAL ---
 function openModal(){ document.getElementById('modal').style.display='flex'; }
 function closeModal(){ document.getElementById('modal').style.display='none'; }
 
-initUser().then(loadHome);
-</script>
-
-</body>
-</html>
+// --- UPLOAD ---
+async function handleUpload(){
+    const file=document.getElementById('vid-input').files[0];
+    if(!file) return alert("Select a video!");
+    if(file.size>50*1024*1024) return alert("Max 50MB");
+    const btn=document.getElementById('start-btn'); const status=document.getElementById('up-status');
+    btn.disabled=true; btn.style.opacity="0.5"; document.getElementById('prog-bg').style.display='block'; 
+    status.innerText="Syncing with Cemtube Drive...";
+    const reader=new FileReader();
+    reader
